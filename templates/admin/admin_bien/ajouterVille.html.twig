@@ -1,0 +1,12 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block ville %}
+    <div class="container">
+    {{ form_start(form) }}
+        {{ form_row(form.nom ) }}
+        {{ form_row(form.codePostal) }}
+        {{ form_row(form.superficie) }}
+        <button type="submit" class="btn btn-primary"> Ajouter</button>
+    {{ form_end(form) }}
+    </div>
+{% endblock %}

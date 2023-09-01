@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}la liste des biens !{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('bien') }}
+{%  endblock %}
+
+{% block body %}
+        <div class="row">
+            {% for biens in bien %}
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h1>{{ biens.nom }}</h1>
+                            <p>{{ biens.description }}</p>
+                            <p>Disponible le: {{ biens.dateDispo|date }}</p>
+                            <a href="{{ path('app_bien_voir',{'id':biens.id}) }}" class="btn btn-primary">Voir le bien</a>
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block contenu %}
+    {% if app.request.get('_route')=="app_admin_bien_ajouter" %}
+        <h1>Ajouter</h1>
+
+    {% else %}
+        <h1>Modifier</h1>
+    {% endif %}
+<div class="container">
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-4">
+            {{ form_row(form.Nom) }}
+        </div>
+       <div class="col-4">
+           {{ form_row(form.Prix) }}
+       </div>
+    <div class="col-4">
+        {{ form_row(form.description) }}
+    </div>
+    <div class="col-4">
+        {{ form_row(form.dateville) }}
+    </div>
+        <div class="col-4">
+            {{ form_row(form.ville) }}
+        </div>
+
+    <div class="col-4">
+        {{ form_row(form.avecJardin) }}
+    </div>
+    </div>
+    {% if app.request.get('_route')=="app_admin_bien_ajouter" %}
+        <button type="submit" class="btn btn-success">Ajouter</button>
+
+        {% else %}
+            <button type="submit" class="btn btn-success">Modifier</button>
+    {% endif %}
+
+    {{ form_end(form) }}
+
+
+</div>
+
+{% endblock %}
