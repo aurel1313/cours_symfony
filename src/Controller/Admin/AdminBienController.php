@@ -76,13 +76,13 @@ class AdminBienController extends AbstractController
     #[Route('/ville','_ville_liste')]
     public function villeList(VilleRepository $ville):Response{
         $villes =$ville->findAll();
-        return $this->render('_list.html.twig',[
+        return $this->render('admin/admin_bien/list.html.twig',[
             'ville'=>$villes
         ]);
     }
     #[Route('/ajouterVille',name:'_ville' )]
     #[Route('/modifierVille/{id}', name: '_modifierVille')]
-    public function ajouterVille(Request $request,VilleRepository $ville, entityManagerInterface $entityManager,int $id):Response{
+    public function ajouterVille(Request $request,VilleRepository $ville, entityManagerInterface $entityManager,int $id=null):Response{
         if($id==null){
             $ville = new Ville();
         }else{

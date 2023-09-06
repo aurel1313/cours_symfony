@@ -33,6 +33,9 @@ class Bien
     #[ORM\JoinColumn(nullable: false)]
     private ?Ville $ville = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $photoPrincipale = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,6 +109,18 @@ class Bien
     public function setVille(?Ville $ville): static
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getPhotoPrincipale(): ?string
+    {
+        return $this->photoPrincipale;
+    }
+
+    public function setPhotoPrincipale(?string $photoPrincipale): static
+    {
+        $this->photoPrincipale = $photoPrincipale;
 
         return $this;
     }
