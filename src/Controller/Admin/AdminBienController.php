@@ -40,6 +40,12 @@ class AdminBienController extends AbstractController
                 'notice',
                 'Modification reussi!'
             );
+            if($bien->getGestionnaire()!== $this->getUser()){
+                $this->addFlash(
+                    'danger',
+                    'degage de la'
+                );
+            }
         }
 
         $form = $this->createForm(BienType::class,$bien);
@@ -67,6 +73,8 @@ class AdminBienController extends AbstractController
             $bien = new Bien();
         }else{
             $bien = $bienRepository->find($id);
+            // je controlle que le bien appartient au bon gestionnaire//
+
         }
 
         $entityManager->remove($bien);

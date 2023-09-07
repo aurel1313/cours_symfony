@@ -15,6 +15,7 @@ class BienController extends AbstractController
     public function index(BienRepository $bienRepository): Response
     {
         $bien = $bienRepository->findAll();
+        $biendateDispo = $bienRepository->listBiensDispoApresDate('2023-01-01');
         return $this->render('bien/index.html.twig', [
             'bien'=>$bien
         ]);
